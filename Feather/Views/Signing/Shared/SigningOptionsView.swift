@@ -27,6 +27,12 @@ struct SigningOptionsView: View {
                     isOn: $options.ppqProtection,
                     temporaryValue: temporaryOptions?.ppqProtection
                 )
+
+                TextField(.localized("PPQ String"), text: $options.ppqString)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled(true)
+                    .disabled(!options.ppqProtection)
+                    .opacity(options.ppqProtection ? 1 : 0.5)
             }
         }
         

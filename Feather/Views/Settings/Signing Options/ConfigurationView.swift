@@ -35,37 +35,11 @@ struct ConfigurationView: View {
             }
             SigningOptionsView(options: $_optionsManager.options)
 		}
-		.toolbar {
-			NBToolbarMenu(
-				systemImage: "character.textbox",
-				style: .icon,
-				placement: .topBarTrailing
-			) {
-				_randomMenuItem()
-			}
-		}
-		.alert(_optionsManager.options.ppqString, isPresented: $isRandomAlertPresenting) {
-			_randomMenuAlert()
-		}
-		.onChange(of: _optionsManager.options) { _ in
-			_optionsManager.saveOptions()
-		}
     }
 }
 
 // MARK: - Extension: View
 extension ConfigurationView {
-	@ViewBuilder
-	private func _randomMenuItem() -> some View {
-		Section(_optionsManager.options.ppqString) {
-			Button(.localized("Change")) {
-				isRandomAlertPresenting = true
-			}
-			Button(.localized("Copy")) {
-				UIPasteboard.general.string = _optionsManager.options.ppqString
-			}
-		}
-	}
 	
 	@ViewBuilder
 	private func _randomMenuAlert() -> some View {

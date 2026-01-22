@@ -19,7 +19,7 @@ struct SettingsView: View {
     var body: some View {
         NBNavigationView(.localized("Settings")) {
             List {
-                NBSection(.localized("Features")) {
+                Section {
                     NavigationLink(destination: AppearanceView()) {
                         Label(.localized("Appearance"), systemImage: "paintbrush")
                     }
