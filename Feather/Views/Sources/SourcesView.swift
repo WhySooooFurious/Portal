@@ -80,14 +80,6 @@ struct SourcesView: View {
 					if #available(iOS 17, *) {
 						ContentUnavailableView {
 							Label(.localized("No Repositories"), systemImage: "globe.desk.fill")
-						} description: {
-							Text(.localized("Get started by adding your first repository."))
-						} actions: {
-							Button {
-								_isAddingPresenting = true
-							} label: {
-								NBButton(.localized("Add Source"), style: .text)
-							}
 						}
 					}
 				}
