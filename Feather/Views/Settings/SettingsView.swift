@@ -32,9 +32,6 @@ struct SettingsView: View {
                     NavigationLink(destination: ConfigurationView()) {
                         Label(.localized("Signing Options"), systemImage: "signature")
                     }
-                    NavigationLink(destination: ArchiveView()) {
-                        Label(.localized("Archive & Compression"), systemImage: "archivebox")
-                    }
                     NavigationLink(destination: InstallationView()) {
                         Label(.localized("Installation"), systemImage: "arrow.down.circle")
                     }
