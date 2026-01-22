@@ -23,9 +23,6 @@ struct SettingsView: View {
                     NavigationLink(destination: AppearanceView()) {
                         Label(.localized("Appearance"), systemImage: "paintbrush")
                     }
-                    NavigationLink(destination: AppIconView(currentIcon: $_currentIcon)) {
-                        Label(.localized("App Icon"), systemImage: "app.badge")
-                    }
                     NavigationLink(destination: CertificatesView()) {
                         Label(.localized("Certificates"), systemImage: "checkmark.seal")
                     }

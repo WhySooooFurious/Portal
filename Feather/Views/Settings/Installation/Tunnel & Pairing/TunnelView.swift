@@ -43,23 +43,8 @@ struct TunnelView: View {
 					}
 				}
 			}
-			
-			NBSection(.localized("Help")) {
-				Button(.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
-					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
-				}
-				
-				if isLocalDevVpnAvailable {
-					Button(.localized("Connect to LocalDevVPN"), systemImage: "link") {
-						UIApplication.open("localdevvpn://enable?scheme=feather")
-					}
-				} else {
-					Button(.localized("Download LocalDevVPN"), systemImage: "arrow.down.app") {
-						UIApplication.open("https://apps.apple.com/us/app/localdevvpn/id6755608044")
-					}
-				}
-			}
 		}
+        
 		.sheet(isPresented: $_isImportingPairingPresenting) {
 			FileImporterRepresentableView(
 				allowedContentTypes:  [.xmlPropertyList, .plist, .mobiledevicepairing],

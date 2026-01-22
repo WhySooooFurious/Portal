@@ -144,16 +144,25 @@ struct FeatherApp: App {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-	func application(
-		_ application: UIApplication,
-		didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
-	) -> Bool {
-		_createPipeline()
-		_createDocumentsDirectories()
-		ResetView.clearWorkCache()
-		_addDefaultCertificates()
-		return true
-	}
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        _createPipeline()
+        _createDocumentsDirectories()
+        ResetView.clearWorkCache()
+        _addDefaultCertificates()
+        _updateSSLCertificatesSilently()
+        return true
+    }
+    
+    private func _updateSSLCertificatesSilently() {
+        let serverPackUrl = "https://backloop.dev/pack.json"
+        FR.downloadSSLCertificates(from: serverPackUrl) { _ in
+            // intentionally silent: no alerts, no UI
+        }
+    }
+
 	
 	private func _createPipeline() {
 		DataLoader.sharedUrlCache.diskCapacity = 0

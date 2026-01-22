@@ -67,21 +67,6 @@ struct ServerView: View {
 				Toggle(.localized("Only use localhost address"), systemImage: "lifepreserver", isOn: $_ipFix)
 					.disabled(_serverMethod != 1)
 			}
-			
-			Section {
-				Button(.localized("Update SSL Certificates"), systemImage: "arrow.down.doc") {
-					FR.downloadSSLCertificates(from: _serverPackUrl) { success in
-						if !success {
-							DispatchQueue.main.async {
-								UIAlertController.showAlertWithOk(
-									title: .localized("SSL Certificates"),
-									message: .localized("Failed to download, check your internet connection and try again.")
-								)
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 }

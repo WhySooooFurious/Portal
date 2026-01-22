@@ -42,6 +42,10 @@ struct AppearanceView: View {
 					.listRowInsets(EdgeInsets())
 					.listRowBackground(EmptyView())
 			}
+            
+            NavigationLink(destination: AppIconView(currentIcon: .constant(nil))) {
+                Label(.localized("App Icon"), systemImage: "app.badge")
+            }
 			
 			NBSection(.localized("Sources")) {
 				Picker(.localized("Store Cell Appearance"), selection: $_storeCellAppearance) {
