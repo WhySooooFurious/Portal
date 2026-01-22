@@ -11,17 +11,23 @@ import SwiftUI
 struct AppearanceTintColorView: View {
 	@AppStorage("Feather.userTintColor") private var selectedColorHex: String = "#B496DC"
 	private let tintOptions: [(name: String, hex: String)] = [
-		("Default", 		"#B496DC"),
-		("Classic", 		"#848ef9"),
-		("Berry",   		"#ff7a83"),
-		("Cool Blue", 		"#4161F1"),
-		("Fuchsia", 		"#FF00FF"),
-		("Protokolle", 		"#4CD964"),
-		("Aidoku", 			"#FF2D55"),
-		("Clock", 			"#FF9500"),
-		("Peculiar", 		"#4860e8"),
-		("Very Peculiar", 	"#5394F7"),
-		("Emily",			"#e18aab")
+        (name: "Cherry Jam",      hex: "#C1121F"),
+        (name: "Watermelon Slice",hex: "#F43F5E"),
+        (name: "Pink Macaron",    hex: "#F9A8D4"),
+        (name: "Orchid Glow",     hex: "#D946EF"),
+        (name: "Lavender Ink",    hex: "#8B5CF6"),
+        (name: "Deep Ocean",      hex: "#1D4ED8"),
+        (name: "Sky Glass",       hex: "#38BDF8"),
+        (name: "Mint Leaf",       hex: "#34D399"),
+        (name: "Wasabi Pop",      hex: "#84CC16"),
+        (name: "Mango Sorbet",    hex: "#FACC15"),
+        (name: "Pumpkin Spice",   hex: "#F97316"),
+        (name: "Apricot Nectar",  hex: "#FDBA74"),
+        (name: "Peach Latte",     hex: "#F4A896"),
+        (name: "Biscoff Spread",  hex: "#A47C65"),
+        (name: "Slate Stone",     hex: "#6B7280"),
+        (name: "Vanilla Cream",   hex: "#F7F2E8"),
+
 	]
 
 	@AppStorage("com.apple.SwiftUI.IgnoreSolariumLinkedOnCheck")
