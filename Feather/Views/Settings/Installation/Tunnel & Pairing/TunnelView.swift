@@ -22,12 +22,6 @@ struct TunnelView: View {
 			Section {
 				_tunnelInfo()
 				TunnelHeaderView()
-			} footer: {
-				if doesHavePairingFile {
-					Text(.localized("Seems like you've gotten your hands on your pairing file!"))
-				} else {
-					Text(.localized("No pairing file found, please import it."))
-				}
 			}
 			
 			Section {

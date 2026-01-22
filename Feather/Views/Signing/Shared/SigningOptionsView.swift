@@ -58,8 +58,6 @@ struct SigningOptionsView: View {
             Toggle(isOn: $_useShareSheet) {
                 Label(.localized("Show Sheet when Exporting"), systemImage: "square.and.arrow.up")
             }
-        } footer: {
-            Text(.localized("Toggling show sheet will present a share sheet after exporting to your files."))
         }
         
         NBSection(.localized("Signing")) {

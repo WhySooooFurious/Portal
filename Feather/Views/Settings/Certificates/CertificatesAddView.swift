@@ -39,12 +39,10 @@ struct CertificatesAddView: View {
 				}
 				NBSection(.localized("Password")) {
 					SecureField(.localized("Enter Password"), text: $_p12Password)
-				} footer: {
-					Text(.localized("Enter the password associated with the private key. Leave it blank if theres no password required."))
 				}
 				
 				Section {
-					TextField(.localized("Nickname (Optional)"), text: $_certificateName)
+					TextField(.localized("Name"), text: $_certificateName)
 				}
 			}
 			.toolbar {

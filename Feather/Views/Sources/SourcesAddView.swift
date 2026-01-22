@@ -93,7 +93,7 @@ struct SourcesAddView: View {
 					}
 				}
 				} footer: {
-					Text(.localized("Supports importing from KravaSign/MapleSign and ESign."))
+					Text(.localized("Supports importing from KravaShit/MapleShit and ESign."))
 				}
 				
 				if !_filteredRecommendedSourcesData.isEmpty {
@@ -114,8 +114,6 @@ struct SourcesAddView: View {
 								}
 							}
 						}
-					} footer: {
-						Text(.localized("Open an [issue](https://github.com/khcrysalis/Feather/issues) on GitHub if you want your source to be featured."))
 					}
 				}
 			}

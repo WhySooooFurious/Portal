@@ -62,8 +62,6 @@ struct AppearanceView: View {
 			if #available(iOS 19.0, *) {
 				NBSection(.localized("Experiments")) {
 					Toggle(.localized("Enable Liquid Glass"), isOn: $_ignoreSolariumLinkedOnCheck)
-				} footer: {
-					Text(.localized("This enables liquid glass for this app, this requires a restart of the app to take effect."))
 				}
 			}
 		}
