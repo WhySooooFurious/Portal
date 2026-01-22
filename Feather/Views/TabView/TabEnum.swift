@@ -27,7 +27,7 @@ enum TabEnum: String, CaseIterable, Hashable {
 	
 	var icon: String {
 		switch self {
-        case .home:         return "home"
+        case .home:         return "house"
 		case .sources: 		return "globe.desk"
 		case .library: 		return "square.grid.2x2"
 		case .settings: 	return "gearshape.2"
