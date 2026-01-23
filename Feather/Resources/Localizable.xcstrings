@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%lld Apps" : {
       "comment" : "Repository app count",
       "extractionState" : "manual",
@@ -503,6 +506,9 @@
           }
         }
       }
+    },
+    "•" : {
+
     },
     "💜 This couldn't of been done without my sponsors!" : {
       "extractionState" : "manual",
@@ -4256,9 +4262,6 @@
         }
       }
     },
-    "Everything looks good." : {
-
-    },
     "Executable" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5776,6 +5779,9 @@
           }
         }
       }
+    },
+    "Guides" : {
+
     },
     "Heartbeat" : {
       "extractionState" : "manual",
@@ -9957,9 +9963,6 @@
         }
       }
     },
-    "Quick Actions" : {
-
-    },
     "Re-sign" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11308,6 +11311,9 @@
           }
         }
       }
+    },
+    "Retry" : {
+
     },
     "Revoked" : {
       "extractionState" : "manual",
@@ -14645,9 +14651,6 @@
           }
         }
       }
-    },
-    "Welcome" : {
-
     },
     "What's New" : {
       "extractionState" : "manual",

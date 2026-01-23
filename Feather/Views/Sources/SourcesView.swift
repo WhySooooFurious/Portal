@@ -27,7 +27,7 @@ struct SourcesView: View {
 		sortDescriptors: [NSSortDescriptor(keyPath: \AltSource.name, ascending: true)],
 		animation: .snappy
 	) private var _sources: FetchedResults<AltSource>
-	
+    
 	// MARK: Body
 	var body: some View {
 		NBNavigationView(.localized("Sources")) {
@@ -70,7 +70,7 @@ struct SourcesView: View {
 					}
 				}
 			}
-			.searchable(text: $_searchText, placement: .platform())
+            .searchable(text: $_searchText, placement: .platform(), prompt: "")
 			.overlay {
 				if _filteredSources.isEmpty {
 					if #available(iOS 17, *) {

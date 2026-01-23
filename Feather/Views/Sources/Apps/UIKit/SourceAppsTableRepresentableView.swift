@@ -249,10 +249,12 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 		let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader")
 		let title: String
 		
-		switch sortOption {
-		case .default: title = .localized("%lld Apps", arguments: _sortedApps.count)
-		case .name, .date: title = _sortedSectionTitles[section]
-		}
+        switch sortOption {
+        case .name, .date:
+            title = _sortedSectionTitles[section]
+        case .default:
+            title = ""
+        }
 		
 		headerView?.contentConfiguration = UIHostingConfiguration {
 			HStack {
