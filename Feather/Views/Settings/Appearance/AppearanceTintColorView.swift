@@ -26,7 +26,7 @@ struct AppearanceTintColorView: View {
         (name: "Peach Latte",     hex: "#F4A896"),
         (name: "Biscoff Spread",  hex: "#A47C65"),
         (name: "Slate Stone",     hex: "#6B7280"),
-        (name: "Vanilla Cream",   hex: "#F7F2E8"),
+        (name: "Vanilla Cream",   hex: "#DCCFBF"),
 
 	]
 

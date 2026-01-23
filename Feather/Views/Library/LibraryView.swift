@@ -67,42 +67,36 @@ struct LibraryView: View {
 					!_filteredSignedApps.isEmpty,
 					_selectedScope == .all || _selectedScope == .signed
 				{
-					NBSection(
-						.localized("Signed"),
-						secondary: _filteredSignedApps.count.description
-					) {
-						ForEach(_filteredSignedApps, id: \.uuid) { app in
-							LibraryCellView(
-								app: app,
-								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-								selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-								selectedAppUUIDs: $_selectedAppUUIDs
-							)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-						}
-					}
+                    NBSection(.localized("Signed")) {
+                        ForEach(_filteredSignedApps, id: \.uuid) { app in
+                            LibraryCellView(
+                                app: app,
+                                selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+                                selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+                                selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+                                selectedAppUUIDs: $_selectedAppUUIDs
+                            )
+                            .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+                        }
+                    }
 				}
 				
 				if
 					!_filteredImportedApps.isEmpty,
 					_selectedScope == .all || _selectedScope == .imported
 				{
-					NBSection(
-						.localized("Imported"),
-						secondary: _filteredImportedApps.count.description
-					) {
-						ForEach(_filteredImportedApps, id: \.uuid) { app in
-							LibraryCellView(
-								app: app,
-								selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-								selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-								selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-								selectedAppUUIDs: $_selectedAppUUIDs
-							)
-							.compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-						}
-					}
+                    NBSection(.localized("Imported")) {
+                        ForEach(_filteredImportedApps, id: \.uuid) { app in
+                            LibraryCellView(
+                                app: app,
+                                selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+                                selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+                                selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+                                selectedAppUUIDs: $_selectedAppUUIDs
+                            )
+                            .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
+                        }
+                    }
 				}
 			}
 			.searchable(text: $_searchText, placement: .platform())

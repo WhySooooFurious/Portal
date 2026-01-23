@@ -25,12 +25,12 @@ struct SourcesCellView: View {
 			iconUrl: source.iconURL
 		)
 		.padding(isRegular ? 12 : 0)
-		.background(
-			isRegular
-			? RoundedRectangle(cornerRadius: 18, style: .continuous)
-				.fill(Color(.quaternarySystemFill))
-			: nil
-		)
+        .background(
+            isRegular
+            ? RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+            : nil
+        )
 		.swipeActions {
 			_actions(for: source)
 			_contextActions(for: source)

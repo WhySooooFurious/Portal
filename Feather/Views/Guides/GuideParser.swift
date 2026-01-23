@@ -1,4 +1,3 @@
-// GuideParser.swift
 import Foundation
 
 final class GuideParser {

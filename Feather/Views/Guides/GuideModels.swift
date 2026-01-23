@@ -1,11 +1,3 @@
-//
-//  GuideIndexEntry.swift
-//  Feather
-//
-//  Created by Anmol Singh on 23/1/2026.
-//
-
-
 import Foundation
 
 struct GuideIndexEntry: Identifiable, Hashable {

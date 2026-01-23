@@ -1,4 +1,3 @@
-// GuideDetailView.swift
 import SwiftUI
 
 struct GuideDetailView: View {

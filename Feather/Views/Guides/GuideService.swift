@@ -1,11 +1,3 @@
-//
-//  GuideService.swift
-//  Feather
-//
-//  Created by Anmol Singh on 23/1/2026.
-//
-
-
 import Foundation
 
 final class GuideService {
