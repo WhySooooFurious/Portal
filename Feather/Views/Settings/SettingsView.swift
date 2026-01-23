@@ -20,7 +20,7 @@ struct SettingsView: View {
         NBNavigationView(.localized("Settings")) {
             List {
                 Section {
-                    NavigationLink(destination: AppearanceView()) {
+                    NavigationLink(destination: AppearanceView(currentIcon: $_currentIcon)) {
                         Label(.localized("Appearance"), systemImage: "paintbrush")
                     }
                     NavigationLink(destination: CertificatesView()) {

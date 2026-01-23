@@ -20,6 +20,7 @@ struct FeatherApp: App {
 	let storage = Storage.shared
     
     init() {
+        UserDefaults.standard.set(1, forKey: "Feather.storeCellAppearance")
         UISearchBar.appearance().backgroundImage = UIImage()
         UISearchBar.appearance().isTranslucent = true
         UISearchBar.appearance().backgroundColor = .clear
