@@ -20,8 +20,8 @@ struct SourcesCellView: View {
 		let isRegular = horizontalSizeClass != .compact
 		
 		FRIconCellView(
-			title: source.name ?? .localized("Unknown"),
-			subtitle: source.sourceURL?.absoluteString ?? "",
+            title: source.name ?? .localized("Unknown"),
+            subtitle: "",
 			iconUrl: source.iconURL
 		)
 		.padding(isRegular ? 12 : 0)

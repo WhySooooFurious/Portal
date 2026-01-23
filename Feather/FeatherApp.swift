@@ -18,6 +18,19 @@ struct FeatherApp: App {
 	
 	@StateObject var downloadManager = DownloadManager.shared
 	let storage = Storage.shared
+    
+    init() {
+        UISearchBar.appearance().backgroundImage = UIImage()
+        UISearchBar.appearance().isTranslucent = true
+        UISearchBar.appearance().backgroundColor = .clear
+        UISearchBar.appearance().barTintColor = .clear
+
+        let tf = UISearchTextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        tf.backgroundColor = .clear
+        tf.borderStyle = .none
+
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .clear
+    }
 	
 	var body: some Scene {
 		WindowGroup {
