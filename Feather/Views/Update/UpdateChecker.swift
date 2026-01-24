@@ -27,11 +27,9 @@ final class UpdateChecker {
 
                 guard info.build > currentBuild else { return }
 
-                let lastShown = UserDefaults.standard.integer(forKey: "feather.lastShownUpdateBuild")
-                guard info.build != lastShown else { return }
-
-                UserDefaults.standard.set(info.build, forKey: "feather.lastShownUpdateBuild")
-
+                if UserDefaults.standard.bool(forKey: "feather.disableUpdateAlerts") {
+                    return
+                }
                 await MainActor.run {
                     let title = info.title ?? "Update available"
                     let message = info.message ?? "A newer version is available."
