@@ -69,12 +69,6 @@ struct AppearanceView: View {
                 .pickerStyle(.segmented)
             }
             
-            Section {
-                NavigationLink(destination: AppIconView(currentIcon: $currentIcon)) {
-                    Label(.localized("App Icon"), systemImage: "app.badge")
-                }
-            }
-            
             NBSection(.localized("Theme")) {
                 AppearanceTintColorView()
                     .listRowInsets(EdgeInsets())

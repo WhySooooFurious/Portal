@@ -15,7 +15,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.ipa</string>
+				<string>com.wsfteam.portal2.ipa</string>
 			</array>
 		</dict>
 		<dict>
@@ -29,7 +29,7 @@
 			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.tipa</string>
+				<string>com.wsfteam.portal2.tipa</string>
 			</array>
 		</dict>
 	</array>
@@ -37,56 +37,65 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>Donor</key>
+			<key>DarkChristmas</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Donor</string>
+					<string>DarkChristmas</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>V0</key>
+			<key>DarkPortal</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>V0</string>
+					<string>DarkPortal</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>V1</key>
+			<key>LightChristmas</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>V1</string>
+					<string>LightChristmas</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>V1Mac</key>
+			<key>LightPortal</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>V1Mac</string>
+					<string>LightPortal</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>V2Mac</key>
+			<key>NormalPortal</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>V2Mac</string>
+					<string>NormalPortal</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>Wing</key>
+			<key>Revoked</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Wing</string>
+					<string>Revoked</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>TransparentPortal</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>TransparentPortal</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

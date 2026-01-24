@@ -14,5 +14,12 @@ struct GeneralView: View {
                 ))
             }
         }
+        .onChange(of: disableUpdateAlerts) { newValue in
+            if newValue == false {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    UpdateChecker.shared.checkAndPromptIfNeeded()
+                }
+            }
+        }
     }
 }

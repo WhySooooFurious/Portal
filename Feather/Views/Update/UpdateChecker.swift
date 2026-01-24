@@ -11,10 +11,20 @@ struct UpdateInfo: Decodable {
 
 final class UpdateChecker {
     static let shared = UpdateChecker()
-
     private init() {}
 
     func checkAndPromptIfNeeded() {
+        if UserDefaults.standard.bool(forKey: "feather.disableUpdateAlerts") {
+            return
+        }
+        checkAndPrompt()
+    }
+
+    func checkAndPromptEvenIfDisabled() {
+        checkAndPrompt()
+    }
+
+    private func checkAndPrompt() {
         guard let endpoint = URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/Portal/ConfigurationFiles/update.json") else { return }
 
         Task {
@@ -27,16 +37,12 @@ final class UpdateChecker {
 
                 guard info.build > currentBuild else { return }
 
-                if UserDefaults.standard.bool(forKey: "feather.disableUpdateAlerts") {
-                    return
-                }
                 await MainActor.run {
                     let title = info.title ?? "Update available"
                     let message = info.message ?? "A newer version is available."
 
                     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Later", style: .cancel))
-
                     alert.addAction(UIAlertAction(title: "Update", style: .default) { _ in
                         if let url = URL(string: info.url) {
                             UIApplication.shared.open(url)

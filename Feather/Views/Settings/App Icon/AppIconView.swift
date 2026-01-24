@@ -25,10 +25,17 @@ extension AppIconView {
 		}
 	}
 	
-	static func altImage(_ name: String?) -> UIImage {
-		let path = Bundle.main.bundleURL.appendingPathComponent((name ?? "AppIcon60x60") + "@2x.png")
-		return UIImage(contentsOfFile: path.path) ?? UIImage()
-	}
+    static func altImage(_ name: String?) -> UIImage {
+        let file = (name ?? "ModernPortal") + ".png"
+        let dir = "Resources/Icons/Main"
+
+        guard let url = Bundle.main.url(forResource: file, withExtension: nil, subdirectory: dir),
+              let image = UIImage(contentsOfFile: url.path) else {
+            return UIImage()
+        }
+
+        return image
+    }
 }
 
 // MARK: - View
@@ -38,16 +45,19 @@ struct AppIconView: View {
 	// dont translate
 	var sections: [String: [AltIcon]] = [
 		"Main": [
-			AltIcon(displayName: "Feather", author: "Samara", key: nil),
-			AltIcon(displayName: "Feather (macOS)", author: "Samara", key: "V2Mac"),
-			AltIcon(displayName: "Feather v1", author: "Samara", key: "V1"),
-			AltIcon(displayName: "Feather v1 (macOS)", author: "Samara", key: "V1Mac"),
-			AltIcon(displayName: "Feather v0", author: "Samara", key: "V0"),
-			AltIcon(displayName: "Feather Donor", author: "Samara", key: "Donor")
+			AltIcon(displayName: "Modern Portal", author: "WSF", key: nil),
+			AltIcon(displayName: "Classic Portal", author: "WSF", key: "NormalPortal"),
+            AltIcon(displayName: "Light Classic Portal", author: "WSF", key: "LightPortal"),
+			AltIcon(displayName: "Dark Classic Portal", author: "WSF", key: "DarkPortal"),
+			AltIcon(displayName: "Transparent Classic Portal", author: "WSF", key: "TransparentPortal"),
 		],
-		"Wingio": [
-			AltIcon(displayName: "Feather", author: "Wingio", key: "Wing"),
-		]
+		"Themed": [
+			AltIcon(displayName: "Light Christmas Cheer", author: "WSF", key: "LightChristmas"),
+            AltIcon(displayName: "Dark Christmas Cheer", author: "WSF", key: "DarkChristmas")
+        ],
+        "Special": [
+            AltIcon(displayName: "Revoked", author: "Samara", key: "Revoked"),
+        ]
 	]
 	
 	// MARK: Body
