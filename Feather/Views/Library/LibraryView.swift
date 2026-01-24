@@ -99,8 +99,6 @@ struct LibraryView: View {
                 }
             }
             .toolbar {
-                }
-                
                 if _editMode.isEditing {
                     NBToolbarButton(
                         .localized("Delete"),

@@ -37,16 +37,6 @@ struct SourcesAddView: View {
 	@State var recommendedSourcesData: [(url: URL, data: ASRepository)] = []
 	let recommendedSources: [URL] = [
 		"https://raw.githubusercontent.com/khcrysalis/Feather/refs/heads/main/app-repo.json",
-		"https://raw.githubusercontent.com/Aidoku/Aidoku/altstore/apps.json",
-		"https://flyinghead.github.io/flycast-builds/altstore.json",
-		"https://xitrix.github.io/iTorrent/AltStore.json",
-		"https://altstore.oatmealdome.me/",
-		"https://raw.githubusercontent.com/LiveContainer/LiveContainer/refs/heads/main/apps.json",
-		"https://alt.crystall1ne.dev/",
-		"https://pokemmo.com/altstore/",
-		"https://provenance-emu.com/apps.json",
-		"https://community-apps.sidestore.io/sidecommunity.json",
-		"https://alt.getutm.app"
 	].map { URL(string: $0)! }
 	
 	@State private var _isImporting = false
@@ -60,9 +50,6 @@ struct SourcesAddView: View {
 					TextField(.localized("Enter Source URL"), text: $_sourceURL)
 						.keyboardType(.URL)
 						.textInputAutocapitalization(.never)
-				} footer: {
-					Text(.localized("The only supported repositories are AltStore repositories."))
-					Text(verbatim: "[\(String.localized("Learn more about how to setup a repository..."))](https://faq.altstore.io/developers/make-a-source)")
 				}
 				
 				Section {
@@ -92,8 +79,6 @@ struct SourcesAddView: View {
 						dismiss()
 					}
 				}
-				} footer: {
-					Text(.localized("Supports importing from KravaShit/MapleShit and ESign."))
 				}
 				
 				if !_filteredRecommendedSourcesData.isEmpty {

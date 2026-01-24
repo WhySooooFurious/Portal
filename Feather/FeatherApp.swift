@@ -33,35 +33,33 @@ struct FeatherApp: App {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .clear
     }
 	
-	var body: some Scene {
-		WindowGroup {
-			VStack {
-				DownloadHeaderView(downloadManager: downloadManager)
-					.transition(.move(edge: .top).combined(with: .opacity))
-				VariedTabbarView()
-					.environment(\.managedObjectContext, storage.context)
-					.onOpenURL(perform: _handleURL)
-					.transition(.move(edge: .top).combined(with: .opacity))
-			}
-			.animation(.smooth, value: downloadManager.manualDownloads.description)
-			.onReceive(NotificationCenter.default.publisher(for: .heartbeatInvalidHost)) { _ in
-				DispatchQueue.main.async {
-					UIAlertController.showAlertWithOk(
-						title: "InvalidHostID",
-						message: .localized("Your pairing file is invalid and is incompatible with your device, please import a valid pairing file.")
-					)
-				}
-			}
-			// dear god help me
-			.onAppear {
-				if let style = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "Feather.userInterfaceStyle")) {
-					UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
-				}
-				
-				UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: UserDefaults.standard.string(forKey: "Feather.userTintColor") ?? "#B496DC"))
-			}
-		}
-	}
+    var body: some Scene {
+        WindowGroup {
+            VStack {
+                DownloadHeaderView(downloadManager: downloadManager)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                VariedTabbarView()
+                    .environment(\.managedObjectContext, storage.context)
+                    .onOpenURL(perform: _handleURL)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
+            .animation(.smooth, value: downloadManager.manualDownloads.description)
+            .onReceive(NotificationCenter.default.publisher(for: .heartbeatInvalidHost)) { _ in
+                DispatchQueue.main.async {
+                    UIAlertController.showAlertWithOk(
+                        title: "InvalidHostID",
+                        message: .localized("Your pairing file is invalid and is incompatible with your device, please import a valid pairing file.")
+                    )
+                }
+            }
+            .onAppear {
+                if let style = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "Feather.userInterfaceStyle")) {
+                    UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
+                }
+                UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: UserDefaults.standard.string(forKey: "Feather.userTintColor") ?? "#B496DC"))
+            }
+        }
+    }
 	
 	private func _handleURL(_ url: URL) {
 		if url.scheme == "portal" {
@@ -167,13 +165,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         ResetView.clearWorkCache()
         _addDefaultCertificates()
         _updateSSLCertificatesSilently()
+        UpdateChecker.shared.checkAndPromptIfNeeded()
         return true
     }
     
     private func _updateSSLCertificatesSilently() {
         let serverPackUrl = "https://backloop.dev/pack.json"
         FR.downloadSSLCertificates(from: serverPackUrl) { _ in
-            // intentionally silent: no alerts, no UI
         }
     }
 
