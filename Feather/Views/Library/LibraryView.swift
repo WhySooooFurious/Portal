@@ -173,7 +173,7 @@ struct LibraryView: View {
     
     private func _pickerBar() -> some View {
         Picker("", selection: $_selectedScope) {
-            Text(.localized("UnSigned")).tag(Scope.imported)
+            Text(.localized("Unsigned")).tag(Scope.imported)
             Text(.localized("Signed")).tag(Scope.signed)
         }
         .pickerStyle(.segmented)
@@ -224,7 +224,7 @@ extension LibraryView {
         var displayName: String {
             switch self {
             case .signed: return .localized("Signed")
-            case .imported: return .localized("UnSigned")
+            case .imported: return .localized("Unsigned")
             }
         }
     }
