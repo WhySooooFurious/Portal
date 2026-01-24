@@ -60,36 +60,32 @@ struct LibraryView: View {
                 NBListAdaptable {
                     if _selectedScope == .signed {
                         if !_filteredSignedApps.isEmpty {
-                            NBSection(.localized("Signed")) {
-                                ForEach(_filteredSignedApps, id: \.uuid) { app in
-                                    LibraryCellView(
-                                        app: app,
-                                        selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-                                        selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-                                        selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-                                        selectedAppUUIDs: $_selectedAppUUIDs
-                                    )
-                                    .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-                                }
+                            ForEach(_filteredSignedApps, id: \.uuid) { app in
+                                LibraryCellView(
+                                    app: app,
+                                    selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+                                    selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+                                    selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+                                    selectedAppUUIDs: $_selectedAppUUIDs
+                                )
+                                .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
                             }
                         }
                     } else {
                         if !_filteredImportedApps.isEmpty {
-                            NBSection(.localized("Unsigned")) {
-                                ForEach(_filteredImportedApps, id: \.uuid) { app in
-                                    LibraryCellView(
-                                        app: app,
-                                        selectedInfoAppPresenting: $_selectedInfoAppPresenting,
-                                        selectedSigningAppPresenting: $_selectedSigningAppPresenting,
-                                        selectedInstallAppPresenting: $_selectedInstallAppPresenting,
-                                        selectedAppUUIDs: $_selectedAppUUIDs
-                                    )
-                                    .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
-                                }
+                            ForEach(_filteredImportedApps, id: \.uuid) { app in
+                                LibraryCellView(
+                                    app: app,
+                                    selectedInfoAppPresenting: $_selectedInfoAppPresenting,
+                                    selectedSigningAppPresenting: $_selectedSigningAppPresenting,
+                                    selectedInstallAppPresenting: $_selectedInstallAppPresenting,
+                                    selectedAppUUIDs: $_selectedAppUUIDs
+                                )
+                                .compatMatchedTransitionSource(id: app.uuid ?? "", ns: _namespace)
                             }
                         }
                     }
-                }
+                } 
                 .scrollDismissesKeyboard(.interactively)
                 .overlay {
                     if (_selectedScope == .signed && _filteredSignedApps.isEmpty) ||

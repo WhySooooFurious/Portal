@@ -27,6 +27,8 @@ struct LibraryCellView: View {
 	@Binding var selectedSigningAppPresenting: AnyApp?
 	@Binding var selectedInstallAppPresenting: AnyApp?
 	@Binding var selectedAppUUIDs: Set<String>
+    @State private var showActionsMenu = false
+
 	
 	// MARK: Selections
 	private var _isSelected: Bool {
@@ -79,27 +81,28 @@ struct LibraryCellView: View {
 				.fill(_isSelected && isEditing ? Color.accentColor.opacity(0.1) : Color(.quaternarySystemFill))
 			: nil
 		)
-		.contentShape(Rectangle())
-		.onTapGesture {
-			if isEditing {
-				_toggleSelection()
-			}
-		}
+        .contentShape(Rectangle(), eoFill: false)
+        .onTapGesture {
+            if isEditing {
+                _toggleSelection()
+            } else {
+                showActionsMenu = true
+            }
+        }
 		.swipeActions {
 			if !isEditing {
 				_actions(for: app)
 			}
 		}
-		.contextMenu {
-			if !isEditing {
-				_contextActions(for: app)
-				Divider()
-				_contextActionsExtra(for: app)
-				Divider()
-				_actions(for: app)
-			}
-		}
+        .confirmationDialog("", isPresented: $showActionsMenu, titleVisibility: .hidden) {
+            _contextActions(for: app)
+            Divider()
+            _contextActionsExtra(for: app)
+            Divider()
+            _actions(for: app)
+        }
 	}
+    
 	
 	private var _desc: String {
 		if let version = app.version, let id = app.identifier {
