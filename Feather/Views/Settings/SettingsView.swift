@@ -15,8 +15,8 @@ struct SettingsView: View {
     @State private var _currentIcon: String? = UIApplication.shared.alternateIconName
 
     var body: some View {
+        NBNavigationView(.localized("Settings")) {
             List {
-                NBSection(.localized("General")) {
                     NavigationLink(destination: GeneralView()) {
                         Label(.localized("General"), systemImage: "gearshape")
                     }
