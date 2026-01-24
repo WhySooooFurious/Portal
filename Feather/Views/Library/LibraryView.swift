@@ -85,7 +85,7 @@ struct LibraryView: View {
                             }
                         }
                     }
-                } 
+                }
                 .scrollDismissesKeyboard(.interactively)
                 .overlay {
                     if (_selectedScope == .signed && _filteredSignedApps.isEmpty) ||
@@ -99,8 +99,6 @@ struct LibraryView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    EditButton()
                 }
                 
                 if _editMode.isEditing {
