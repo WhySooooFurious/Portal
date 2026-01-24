@@ -1,5 +1,9 @@
 import SwiftUI
 
+private func sf(_ name: String, fallback: String) -> String {
+    UIImage(systemName: name) == nil ? fallback : name
+}
+
 struct GuidesHomeSectionView: View {
     @StateObject var store: GuideStore
 
@@ -44,7 +48,7 @@ private struct GuideRow: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.accentColor.opacity(0.12))
-                Image(systemName: "book.pages")
+                Image(systemName: sf("book.pages", fallback: "book"))
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundStyle(Color.accentColor)
             }
