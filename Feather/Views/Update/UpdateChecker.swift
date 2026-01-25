@@ -25,23 +25,29 @@ final class UpdateChecker {
     }
 
     private func checkAndPrompt() {
-        guard let endpoint = URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/portal/configurationfiles/update.json") else { return }
+        guard let endpoint = URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/portal/configurationfiles/update.json") else {
+            return
+        }
 
         Task {
             do {
                 let (data, _) = try await URLSession.shared.data(from: endpoint)
                 let info = try JSONDecoder().decode(UpdateInfo.self, from: data)
 
-                let currentBuildStr = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "0"
+                let currentBuildStr = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"
                 let currentBuild = Int(currentBuildStr) ?? 0
+
+                print("Update check → local:", currentBuild, "remote:", info.build)
 
                 guard info.build > currentBuild else { return }
 
                 await MainActor.run {
-                    let title = info.title ?? "Update available"
-                    let message = info.message ?? "A newer version is available."
+                    let alert = UIAlertController(
+                        title: info.title ?? "Update available",
+                        message: info.message ?? "A newer version is available.",
+                        preferredStyle: .alert
+                    )
 
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Later", style: .cancel))
                     alert.addAction(UIAlertAction(title: "Update", style: .default) { _ in
                         if let url = URL(string: info.url) {
@@ -52,7 +58,7 @@ final class UpdateChecker {
                     UIApplication.topViewController()?.present(alert, animated: true)
                 }
             } catch {
-                return
+                print("Update check failed:", error)
             }
         }
     }
