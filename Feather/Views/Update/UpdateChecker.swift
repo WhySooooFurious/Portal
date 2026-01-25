@@ -3,7 +3,7 @@ import UIKit
 
 struct UpdateInfo: Decodable {
     let version: String
-    let build: Int
+    let build: Int?
     let title: String?
     let message: String?
     let url: String
@@ -34,12 +34,10 @@ final class UpdateChecker {
                 let (data, _) = try await URLSession.shared.data(from: endpoint)
                 let info = try JSONDecoder().decode(UpdateInfo.self, from: data)
 
-                let currentBuildStr = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"
-                let currentBuild = Int(currentBuildStr) ?? 0
+                let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
+                print("Update check → local:", currentVersion, "remote:", info.version)
 
-                print("Update check → local:", currentBuild, "remote:", info.build)
-
-                guard info.build > currentBuild else { return }
+                guard isRemoteVersionNewer(remote: info.version, local: currentVersion) else { return }
 
                 await MainActor.run {
                     let alert = UIAlertController(
@@ -50,9 +48,7 @@ final class UpdateChecker {
 
                     alert.addAction(UIAlertAction(title: "Later", style: .cancel))
                     alert.addAction(UIAlertAction(title: "Update", style: .default) { _ in
-                        if let url = URL(string: info.url) {
-                            UIApplication.shared.open(url)
-                        }
+                        UIApplication.shared.open(URL(string: info.url)!)
                     })
 
                     UIApplication.topViewController()?.present(alert, animated: true)
@@ -61,5 +57,18 @@ final class UpdateChecker {
                 print("Update check failed:", error)
             }
         }
+    }
+
+    private func isRemoteVersionNewer(remote: String, local: String) -> Bool {
+        let r = remote.split(separator: ".").map { Int($0) ?? 0 }
+        let l = local.split(separator: ".").map { Int($0) ?? 0 }
+
+        let maxCount = max(r.count, l.count)
+        for i in 0..<maxCount {
+            let rv = i < r.count ? r[i] : 0
+            let lv = i < l.count ? l[i] : 0
+            if rv != lv { return rv > lv }
+        }
+        return false
     }
 }
