@@ -5,8 +5,8 @@ import PhotosUI
 struct HomeView: View {
     private let guideStore = GuideStore(
         service: GuideService(
-            indexURL: URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/Portal/Guides/Markdown_filenames.plist")!,
-            guidesBaseURL: URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/Portal/Guides/")!
+            indexURL: URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/portal/guides/markdown_filenames.plist")!,
+            guidesBaseURL: URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/portal/guides/")!
         )
     )
 
