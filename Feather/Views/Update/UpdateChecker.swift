@@ -25,7 +25,7 @@ final class UpdateChecker {
     }
 
     private func checkAndPrompt() {
-        guard let endpoint = URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/Portal/ConfigurationFiles/update.json") else { return }
+        guard let endpoint = URL(string: "https://raw.githubusercontent.com/WSF-Team/WSF/refs/heads/main/portal/configurationfiles/update.json") else { return }
 
         Task {
             do {
