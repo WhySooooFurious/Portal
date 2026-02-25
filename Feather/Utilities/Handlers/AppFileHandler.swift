@@ -38,6 +38,14 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 	func copy() async throws {
 		try _fileManager.createDirectoryIfNeeded(at: _uniqueWorkDir)
 		
+		var accessing = false
+		if _ipa.startAccessingSecurityScopedResource() {//should handle larger ipa files now
+			accessing = true
+		}
+		defer {
+			if accessing { _ipa.stopAccessingSecurityScopedResource() }
+		}
+		
 		let destinationURL = _uniqueWorkDir.appendingPathComponent(_ipa.lastPathComponent)
 
 		try _fileManager.removeFileIfNeeded(at: destinationURL)
@@ -121,7 +129,6 @@ final class AppFileHandler: NSObject, @unchecked Sendable {
 	}
 	
 	private func _directory() async throws -> URL {
-		// Documents/Feather/Unsigned/\(UUID)
 		_fileManager.unsigned(_uuid)
 	}
 	
